@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DropCut</title>
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/fs/fs.ext.js"></script>
+    <script src="js/fs/fs.core.js"></script>
+    <script src="js/fs/fs.util.js"></script>
+    <script src="js/fs/fs.io.js"></script>
+    <script src="js/fs/fs.reader.js"></script>
+    <script src="js/fs/fs.writer.js"></script>
+    <script src="js/lib/zip.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/backbone-min.js"></script>
+    <script src="js/async.js"></script>
+    <script src="js/imager.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/app/views.js"></script>
+    <script src="js/app/controller.js"></script>
+    <script>
+    $(function()
+    {
+        AppController.init();
+    });
+    </script>
+</head>
+<body>
+<section id="options_panel">
+    <label for="resizing_types">Size</label>
+    <select id="resizing_types">
+        <option data-width="320" data-height="200">320x200</option>
+        <option data-width="640" data-height="480">640x480</option>
+        <option data-width="800" data-height="600">800x600</option>
+        <option data-width="1024" data-height="768">1024x768</option>
+    </select>
+    <label for="fileNamePattern">File name pattern</label><input id="fileNamePattern" placeholder="Put here">
+</section>
+<section id="drop_zone">Drop pictures here</section>
+<section id="process_info" class="infobox">
+    <header id="total_size"><h1></h1></header>
+    <output id="list"><ul></ul></output>
+</section>
+<section id="help" class="infobox">
+    <header><h1>How to use</h1></header>
+    <ol>
+        <li>Select desired resolution</li>
+        <li>Optionally set new pattern for file names</li>
+        <li>Drop pictures from filesystem</li>
+        <li>Zip file with resized pictures will be created</li>
+        <li>When conversion is finished you will get notification</li>
+    </ol>
+    <p>Please don't convert more than 10 pictures at time</p>
+</section>
+<footer id="site_footer">
+    <div id="footer_top_border" class="footer_border"></div>
+    <div id="footer_bottom_border" class="footer_border"></div>
+    <article id="footer_info">
+        <section id="site_info">
+            This service was developed for you by Anton Podviaznikov and Maryna Aleksandrova in 2011.
+            We use <a href='http://jszip.stuartk.co.uk'>JsZip</a> for creating zip files.
+            <p>Have any problems/ideas? Contact <a href='mailto:podviaznikov@gmail.com'> us</a></p>
+        </section>
+    </article>
+</footer>
+<script lang="html/template" id="status_tpl">
+    <li id="<%= shortName %>"><strong><%= name %></strong></li>
+</script>
+</body>
+</html>
