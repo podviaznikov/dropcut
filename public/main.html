@@ -1,29 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head  manifest="app.mf">
     <title>DropCut</title>
+    <meta name="author" content="Enginimation Studio(enginimation.com)">
+    <meta name="description" content="Web application for resizing images right in the browser">
     <link href="css/styles.css" rel="stylesheet">
-    <script src="js/fs/fs.ext.js"></script>
-    <script src="js/fs/fs.core.js"></script>
-    <script src="js/fs/fs.util.js"></script>
-    <script src="js/fs/fs.io.js"></script>
-    <script src="js/fs/fs.reader.js"></script>
-    <script src="js/fs/fs.writer.js"></script>
-    <script src="js/lib/zip.js"></script>
-    <script src="js/lib/jquery.min.js"></script>
-    <script src="js/lib/underscore-min.js"></script>
-    <script src="js/lib/backbone-min.js"></script>
-    <script src="js/async.js"></script>
-    <script src="js/imager.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/app/views.js"></script>
-    <script src="js/app/controller.js"></script>
-    <script>
-    $(function()
-    {
-        AppController.init();
-    });
-    </script>
+    <script src="js/zip.js"></script>
+    <script src="js/libs.bundle.js"></script>
+    <script src="js/app.js"></script>
+    <script>$(function(){AppController.init();});</script>
 </head>
 <body>
 <section id="options_panel">
@@ -57,9 +42,9 @@
     <div id="footer_bottom_border" class="footer_border"></div>
     <article id="footer_info">
         <section id="site_info">
-            This service was developed for you by Anton Podviaznikov and Maryna Aleksandrova in 2011.
+            This service was developed for you by Enginimation Studio in 2011.
             We use <a href='http://jszip.stuartk.co.uk'>JsZip</a> for creating zip files.
-            <p>Have any problems/ideas? Contact <a href='mailto:podviaznikov@gmail.com'> us</a></p>
+            <p>Have any problems/ideas? Contact <a href='mailto:hello@enginimation.com'> us</a></p>
         </section>
     </article>
 </footer>

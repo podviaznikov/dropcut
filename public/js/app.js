@@ -1,17 +1,18 @@
-/**
- * License
- *
- *(The MIT License)
- *
- * Copyright (c) 2011 Anton Podviaznikov <podviaznikov@gmail.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+// DropCut
+// (c) 2011 Enginimation Studio (http://enginimation.com).
+// DropCut may be freely distributed under the MIT license.
+// For all details and documentation:
+// https://github.com/podviaznikov/dropcut
 "use strict";
+var AppController=
+{
+	init:function()
+	{
+	    this.optionsView=new ui.OptionsView;
+	    this.outputView = new ui.OutputView;
+		this.uploadView=new ui.UploadPictureView;
+	}
+};
 var ui={};
 $(function()
 {
@@ -158,4 +159,42 @@ $(function()
         }
 
     });
+});
+
+function createCallback(limit, fn)
+{
+    var finishedCalls = 0;
+    return function()
+    {
+        if (++finishedCalls == limit)
+        {
+             fn();
+        }
+    };
+}
+
+function getSelectedOption(selectId)
+{
+    var select_list_field = document.getElementById(selectId);
+    var select_list_selected_index = select_list_field.selectedIndex;
+    var option = select_list_field[select_list_selected_index];
+    return option.dataset;
+}
+
+var imageUtils=Object.create({},
+{
+    calculateRatio:
+    {
+        value:function(img,maxWidth,maxHeight)
+        {
+            var ratio = 1;
+
+            if(img.width > maxWidth)
+              ratio = maxWidth / img.width;
+            else if(img.height > maxHeight)
+              ratio = maxHeight / img.height;
+
+            return ratio;
+        }
+    }
 });
