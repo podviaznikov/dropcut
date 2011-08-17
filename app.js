@@ -4,6 +4,7 @@
 var util = require('util'),
     express = require('express'),
     connect = require('connect'),
+    appCache = require('connect-app-cache'),
     app = express.createServer();
 app.configure(function(){
     app.use(connect.favicon(__dirname + '/public/16.png'));
@@ -13,9 +14,8 @@ app.configure(function(){
     app.use(app.router);
     //public folder for static files
     app.use(express.static(__dirname+'/public'));
+    app.use(appCache("app.mf",__dirname+"/app.mf",{maxAge:0}));
 });
-app.get('/app.mf',function(req,res){
-    res.header("Content-Type", "text/cache-manifest");
-    res.sendfile(__dirname + '/app.mf');
-});
+//util.log(util.inspect(appCache));
 exports.app=app;
+//app.listen(3000);
