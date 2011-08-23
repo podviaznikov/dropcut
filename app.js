@@ -16,6 +16,4 @@ app.configure(function(){
     app.use(express.static(__dirname+'/public'));
     app.use(appCache("app.mf",__dirname+"/app.mf",{maxAge:0}));
 });
-//util.log(util.inspect(appCache));
-exports.app=app;
-//app.listen(3000);
+app.listen(8084);
